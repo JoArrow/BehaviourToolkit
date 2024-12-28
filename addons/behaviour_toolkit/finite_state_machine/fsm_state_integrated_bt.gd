@@ -30,12 +30,12 @@ class_name FSMStateIntegratedBT extends FSMState
 
 
 ## Executes after the state is entered.
-func _on_enter(_actor: Node, _blackboard: Blackboard) -> void:
+func _on_enter(_actor: Node, _fsm: FiniteStateMachine, _blackboard: Blackboard) -> void:
 	behaviour_tree.active = true
 
 
 ## Executes every process call, if the state is active.
-func _on_update(_delta: float, _actor: Node, _blackboard: Blackboard) -> void:
+func _on_update(_delta: float, _actor: Node, _fsm: FiniteStateMachine, _blackboard: Blackboard) -> void:
 	behaviour_tree._process_code(_delta)
 	if behaviour_tree.current_status == on_status:
 		if fire_event_on_status:
@@ -43,7 +43,7 @@ func _on_update(_delta: float, _actor: Node, _blackboard: Blackboard) -> void:
 
 
 ## Executes before the state is exited.
-func _on_exit(_actor: Node, _blackboard: Blackboard) -> void:
+func _on_exit(_actor: Node, _fsm: FiniteStateMachine, _blackboard: Blackboard) -> void:
 	behaviour_tree.active = false
 
 

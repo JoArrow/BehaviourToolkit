@@ -102,7 +102,7 @@ func start() -> void:
 
 	# Set the initial state
 	active_state = initial_state
-	active_state._on_enter(actor, blackboard)
+	active_state._on_enter(actor, self, blackboard)
 
 	# Emit the state changed signal
 	emit_signal("state_changed", active_state)
@@ -146,19 +146,19 @@ func _process_code(delta: float) -> void:
 			break
 	
 	# Process the current state
-	active_state._on_update(delta, actor, blackboard)
+	active_state._on_update(delta, actor, self, blackboard)
 
 
 ## Changes the current state and calls the appropriate methods like _on_exit and _on_enter.
 func change_state(state: FSMState) -> void:
 	# Exit the current state
-	active_state._on_exit(actor, blackboard)
+	active_state._on_exit(actor, self, blackboard)
 
 	# Change the current state
 	active_state = state
 
 	# Enter the new state
-	active_state._on_enter(actor, blackboard)
+	active_state._on_enter(actor, self, blackboard)
 
 	if verbose: BehaviourToolkit.Logger.say("Changed state to " + active_state.get_name(), self)
 

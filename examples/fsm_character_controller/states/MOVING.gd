@@ -2,7 +2,7 @@ extends FSMState
 
 
 # Executes after the state is entered.
-func _on_enter(actor: Node, _blackboard: Blackboard) -> void:
+func _on_enter(actor: Node, _fsm: FiniteStateMachine, _blackboard: Blackboard) -> void:
 	# Cast actor
 	actor = actor as CharacterBody2D
 
@@ -10,7 +10,7 @@ func _on_enter(actor: Node, _blackboard: Blackboard) -> void:
 
 
 # Executes every _process call, if the state is active.
-func _on_update(_delta: float, actor: Node, _blackboard: Blackboard) -> void:
+func _on_update(_delta: float, actor: Node, _fsm: FiniteStateMachine, _blackboard: Blackboard) -> void:
 	# Cast actor
 	actor = actor as CharacterBody2D
 
@@ -26,5 +26,5 @@ func _on_update(_delta: float, actor: Node, _blackboard: Blackboard) -> void:
 
 
 # Executes before the state is exited.
-func _on_exit(_actor: Node, _blackboard: Blackboard) -> void:
+func _on_exit(_actor: Node, _fsm: FiniteStateMachine, _blackboard: Blackboard) -> void:
 	pass
